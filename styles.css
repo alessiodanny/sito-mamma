@@ -48,9 +48,11 @@ body {
     background: rgba(241, 240, 234, 0.95);
     backdrop-filter: blur(15px);
     z-index: 1000;
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 1px solid rgba(224, 221, 207, 0.3);
     box-shadow: 0 2px 20px rgba(45, 35, 46, 0.05);
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .nav-container {

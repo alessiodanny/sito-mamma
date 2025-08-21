@@ -29,16 +29,34 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar background change on scroll
+// Navbar auto-hide on scroll
+let lastScrollTop = 0;
+const navbar = document.querySelector('.navbar');
+
 window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Navbar auto-hide logic
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // Scrolling down - hide navbar
+        navbar.style.transform = 'translateY(-100%)';
+        navbar.style.opacity = '0';
+    } else {
+        // Scrolling up - show navbar
+        navbar.style.transform = 'translateY(0)';
+        navbar.style.opacity = '1';
+    }
+    
+    // Navbar background change on scroll
+    if (scrollTop > 100) {
         navbar.style.background = 'rgba(241, 240, 234, 0.98)';
         navbar.style.boxShadow = '0 5px 20px rgba(45, 35, 46, 0.1)';
     } else {
         navbar.style.background = 'rgba(241, 240, 234, 0.95)';
         navbar.style.boxShadow = 'none';
     }
+    
+    lastScrollTop = scrollTop;
 });
 
 // Intersection Observer for scroll animations
