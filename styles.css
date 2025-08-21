@@ -417,6 +417,9 @@ section {
     box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .benefit-card::before {
@@ -442,6 +445,19 @@ section {
 .benefit-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.benefit-icon i {
+    color: var(--deep-purple);
+    transition: var(--transition);
+}
+
+.benefit-card:hover .benefit-icon i {
+    transform: scale(1.1);
+    color: var(--dark-gray);
 }
 
 .benefit-card h3 {
