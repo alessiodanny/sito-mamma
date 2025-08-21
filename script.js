@@ -127,37 +127,6 @@ const aboutObserver = new IntersectionObserver((entries) => {
 
 aboutObserver.observe(aboutSection);
 
-// Form submission handling
-const contactForm = document.querySelector('.contact-form');
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(contactForm);
-    const name = formData.get('name') || contactForm.querySelector('input[type="text"]').value;
-    const email = formData.get('email') || contactForm.querySelector('input[type="email"]').value;
-    const message = formData.get('message') || contactForm.querySelector('textarea').value;
-    
-    // Simple validation
-    if (!name || !email || !message) {
-        showNotification('Per favore compila tutti i campi', 'error');
-        return;
-    }
-    
-    // Simulate form submission
-    const submitButton = contactForm.querySelector('.submit-button');
-    const originalText = submitButton.textContent;
-    
-    submitButton.textContent = 'Invio in corso...';
-    submitButton.disabled = true;
-    
-    setTimeout(() => {
-        showNotification('Messaggio inviato con successo!', 'success');
-        contactForm.reset();
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-    }, 2000);
-});
 
 // Notification system
 function showNotification(message, type = 'info') {
